@@ -71,9 +71,9 @@ const filter_reducer = (state, action) => {
     if (sort === "lowest") {
       products.sort((a, b) => {
         if (a.price > b.price) {
-          return -1;
-        } else if (a.price < b.price) {
           return 1;
+        } else if (a.price < b.price) {
+          return -1;
         } else {
           return 0;
         }
