@@ -109,7 +109,7 @@ a {
   min-height: calc(100vh - (20vh + 160px));
 }
 .section_header {
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
 }
 
 .section {
