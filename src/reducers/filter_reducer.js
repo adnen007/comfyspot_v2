@@ -26,13 +26,6 @@ const filter_reducer = (state, action) => {
         max: Math.max(...prices),
       },
     };
-    // here why we are doing `all_products:[...action.payload]` instead of
-    // `all_products:action.payload` cause as we know in js objects are save by reference.
-    //  so let's say that you will do something like this `all_products:action.payload` and
-    // `filtered_products:action.payload` so filtered_products and all_products will point to
-    // the same object so whenever you modify one of them they both will change and you don't
-    // want that. so best thing to do is just get a copy of the obejct instead of its reference
-    // and by doing `{...arrayName}` you are just doing that.
   }
   if (action.type === SET_GRIDVIEW) {
     return { ...state, grid_view: true };

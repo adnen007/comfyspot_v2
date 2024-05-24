@@ -5,9 +5,6 @@ import { getUniqueValues } from "../utils/helpers";
 import { FaCheck } from "react-icons/fa";
 import { useRef } from "react";
 
-// first thing came to my mind to make the form a controled input
-// how (useing a useState so that when you click you make toggle the check and the unchecked).
-
 const Filters = () => {
   const {
     filters: { text, category, company, color, price, min, max },
@@ -103,9 +100,6 @@ const Filters = () => {
         onClick={() => {
           clearFilters();
           colorForm.current.checked = true;
-          // ok here i know that there is something i'm doing wrong i'm not supposied to reset
-          // the colors like this probably i had to chose somthing else instead of radio input
-          // and with some customization i would get something get out of it.
         }}
         className="clear"
       >

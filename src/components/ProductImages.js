@@ -1,13 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// what i did here i always make the images take as much as they can with and i gave them fixed
-// height
-// later depend on the screen i may change the height of the images or the with of their c
-// container (or let the container always take as much as they can).
-// also give them object-fit:cover to don't destroy the image.
-
-// i just followed the design to make the same thing with may webpage but i'm still curious did
-// the instructor did it in my way or he used another method.
 
 const ProductImages = ({ images }) => {
   const [mainImage, setMainImage] = useState(images[0]);

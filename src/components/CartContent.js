@@ -73,7 +73,7 @@ const Wrapper = styled.div`
     cursor: pointer;
   }
   .buttons .clear_cart {
-    background-color: var(--clr-black);
+    background-color: var(--clr-primary-5);
   }
   .total {
     margin-top: 40px;

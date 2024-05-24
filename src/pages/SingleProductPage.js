@@ -8,10 +8,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const SingleProductPage = () => {
-  // everything from : (:included) till the end will be igonred when we compare with current
-  // path and instead it will be saved in the usePramas hook.(the things that will be saved
-  // not :id.. those are place holder)
-
   const { id } = useParams();
 
   const {

@@ -31,7 +31,7 @@ const Wrapper = styled.section`
     font-size: 1.8rem;
   }
   a {
-    color: var(--clr-primary-3);
+    color: var(--clr-primary-1);
     padding: 0.5rem;
     transition: var(--transition);
   }

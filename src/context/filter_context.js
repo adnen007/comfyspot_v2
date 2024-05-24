@@ -34,20 +34,16 @@ const FilterContext = React.createContext();
 export const FilterProvider = ({ children }) => {
   const { products } = useProductsContext();
   const [state, dispatch] = useReducer(reducer, initialState);
-  // here you can't just get products and include them in the intialState cause durring the
-  // first render the product would be empty cause we still didn't fetch them casue of that.
-  // we dispatch them in the useEffect whenever the value of products change.
 
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]);
 
   useEffect(() => {
-      if (state.all_products.length > 0) {
+    if (state.all_products.length > 0) {
       dispatch({ type: FILTER_PRODUCTS });
     }
     dispatch({ type: SORT_PRODUCTS });
-  
   }, [state.sort, state.filters, products, state.all_products.length]);
 
   const setGridView = () => {
@@ -94,7 +90,6 @@ export const FilterProvider = ({ children }) => {
     </FilterContext.Provider>
   );
 };
-// make sure use
 export const useFilterContext = () => {
   return useContext(FilterContext);
 };
