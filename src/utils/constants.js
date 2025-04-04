@@ -46,19 +46,19 @@ export const services = [
     text: "Choose colors, fabrics, or sizes that suit your space.",
   },
   {
-    id: 1,
+    id: 4,
     icon: <RiArrowGoBackLine />,
     title: "Easy Returns",
     text: "Not satisfied? Return within 30 days, no questions asked.",
   },
   {
-    id: 2,
+    id: 5,
     icon: <MdPhone />,
     title: "Friendly Support",
     text: "Our team is here to help — before and after your purchase.",
   },
   {
-    id: 3,
+    id: 6,
     icon: <MdPayment />,
     title: " Secure Payment",
     text: "Fast and safe, pay when you get your order",
