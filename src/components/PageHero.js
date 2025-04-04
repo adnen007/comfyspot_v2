@@ -23,12 +23,13 @@ const PageHero = ({ title, product }) => {
 const Wrapper = styled.section`
   background: var(--clr-primary-10);
   width: 100%;
-  min-height: 20vh;
+  min-height: 13vh;
   display: flex;
   align-items: center;
   color: var(--clr-primary-1);
   h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    text-transform: capitalize;
   }
   a {
     color: var(--clr-primary-1);

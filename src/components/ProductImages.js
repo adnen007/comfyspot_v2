@@ -1,30 +1,28 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 const ProductImages = ({ images }) => {
-  const [mainImage, setMainImage] = useState(images[0]);
+  const [mainImage, setMainImage] = useState(images[0].med);
 
   const onImageClick = (i) => {
-    setMainImage(images[i]);
+    setMainImage(images[i].med);
   };
 
   return (
     <Wrapper>
       <div className="image">
         <div className="main_image">
-          <img src={mainImage.url} alt="" />
+          <img src={mainImage} alt="" />
         </div>
         <div className="images">
           {images.map((item, i) => {
             return (
               <div
                 key={i}
-                className={`secondary_image ${
-                  item.url === mainImage.url ? "active" : null
-                }`}
+                className={`secondary_image ${item.med === mainImage ? "active" : null}`}
                 onClick={() => onImageClick(i)}
               >
-                <img src={item.url} alt="" />
+                <img src={item.small} alt="" />
               </div>
             );
           })}

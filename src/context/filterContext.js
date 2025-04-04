@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useReducer } from "react";
-import reducer from "../reducers/filter_reducer";
+import reducer from "../reducers/filterReducer";
 import {
   LOAD_PRODUCTS,
   SET_GRIDVIEW,
@@ -10,7 +10,7 @@ import {
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
 } from "../actions";
-import { useProductsContext } from "./products_context";
+import { useProductsContext } from "./productsContext";
 
 const initialState = {
   filters: {
@@ -23,9 +23,9 @@ const initialState = {
     max: 0,
     shipping: false,
   },
-  filtered_products: [],
-  all_products: [],
-  grid_view: true,
+  filteredProducts: [],
+  allProducts: [],
+  gridView: true,
   sort: "lowest",
 };
 
@@ -40,11 +40,11 @@ export const FilterProvider = ({ children }) => {
   }, [products]);
 
   useEffect(() => {
-    if (state.all_products.length > 0) {
+    if (state.allProducts.length > 0) {
       dispatch({ type: FILTER_PRODUCTS });
     }
     dispatch({ type: SORT_PRODUCTS });
-  }, [state.sort, state.filters, products, state.all_products.length]);
+  }, [state.sort, state.filters, products, state.allProducts.length]);
 
   const setGridView = () => {
     dispatch({ type: SET_GRIDVIEW });
@@ -54,6 +54,7 @@ export const FilterProvider = ({ children }) => {
   };
 
   const updateSort = (criterion) => {
+    //This will only update the sort value, but the actual sorting of the products occurs with the sort_product action
     dispatch({ type: UPDATE_SORT, payload: criterion });
   };
 

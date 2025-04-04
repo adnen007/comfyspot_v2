@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useCartContext } from "../context/cart_context";
+import { useCartContext } from "../context/cartContext";
 import { Link } from "react-router-dom";
 import CartColumns from "./CartColumns";
 import CartItem from "./CartItem";
@@ -59,6 +59,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
+    gap: 20px;
   }
   .buttons .continue_shopping,
   .buttons .clear_cart {

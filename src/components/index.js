@@ -16,7 +16,7 @@ import Sort from "./Sort";
 import Stars from "./Stars";
 import CartContent from "./CartContent";
 import PageHero from "./PageHero";
-import StripeCheckout from "./StripeCheckout";
+import ErrorBoundary from "./ErrorBoundary";
 export {
   FeaturedProducts,
   Navbar,
@@ -36,5 +36,5 @@ export {
   Stars,
   CartContent,
   PageHero,
-  StripeCheckout,
+  ErrorBoundary,
 };

@@ -1,7 +1,7 @@
-import React from "react";
 import styled from "styled-components";
 import { Wrapper as CartItemWrapper } from "./CartItem";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const AmountButtons = ({ amount, id, stock, toggleAmount }) => {
   const onMinusClick = () => {
@@ -13,6 +13,8 @@ const AmountButtons = ({ amount, id, stock, toggleAmount }) => {
   const onPlusClick = () => {
     if (amount + 1 <= stock) {
       toggleAmount(1, id);
+    } else {
+      toast.warn(`"Only ${stock} left."`);
     }
   };
   return (

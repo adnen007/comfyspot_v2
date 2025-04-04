@@ -15,6 +15,7 @@ varaible styles
   /* lighter shades of primary color */
   --clr-primary-6: hsl(22, 31%, 60%);
   --clr-primary-7: #fff9d0;
+
   --clr-primary-8: hsl(20, 31%, 74%);
   --clr-primary-9: hsl(22, 31%, 81%);
   --clr-primary-10: #caf4ff;
@@ -56,21 +57,30 @@ Global Style
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none; /* Prevents text selection */
+}
+
+html {
+  scroll-behavior: smooth;
 }
 body {
   background-color: #eee;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
 }
 .app {
   background-color: white;
   min-height: 100vh;
 }
+input,
+textarea {
+  user-select: text;
+}
 
 .container {
   width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -137,7 +147,8 @@ a {
 
 .loading {
   width: 6rem;
-  height: 6rem;
+  min-height: 6rem;
+  height: 100%;
   margin: 0 auto;
   margin-top: 10rem;
   border-radius: 50%;
@@ -160,10 +171,12 @@ a {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
   border-color: transparent;
+  border: solid 1px transparent;
 }
 .btn:hover {
-  color: var(--clr-primary-1);
-  background: var(--clr-primary-7);
+  color: black !important;
+  background: white;
+  border: solid 1px black;
 }
 .title {
   text-align: center;

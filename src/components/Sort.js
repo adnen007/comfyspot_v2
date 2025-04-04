@@ -1,14 +1,14 @@
 import React from "react";
-import { useFilterContext } from "../context/filter_context";
+import { useFilterContext } from "../context/filterContext";
 import { BsFillGridFill, BsList } from "react-icons/bs";
 import styled from "styled-components";
 const Sort = () => {
   const {
-    grid_view: grid,
+    gridView: grid,
     setGridView,
     setListView,
     updateSort,
-    filtered_products: products,
+    filteredProducts: products,
     sort,
   } = useFilterContext();
   return (
@@ -25,11 +25,7 @@ const Sort = () => {
       <hr />
       <div className="sort_by">
         <label htmlFor="sort_by">sort by</label>
-        <select
-          value={sort}
-          onChange={(e) => updateSort(e.currentTarget.value)}
-          id="sort_by"
-        >
+        <select value={sort} onChange={(e) => updateSort(e.currentTarget.value)} id="sort_by">
           <option value="lowest"> {"Price (Lowest)"} </option>
           <option value="highest">{"Price (Highest)"}</option>
           <option value="a-z">{"Name (A - Z)"}</option>
@@ -55,6 +51,7 @@ const Wrapper = styled.section`
     border-radius: var(--radius);
     padding: 3px;
     color: var(--clr-black);
+    cursor: pointer;
   }
   .icons .grid.active,
   .icons .list.active {
@@ -85,6 +82,7 @@ const Wrapper = styled.section`
     border-color: transparent;
     font-size: 17px;
     color: var(--clr-black);
+    cursor: pointer;
   }
   @media (width >= 768px) {
     flex-direction: row;

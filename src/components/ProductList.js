@@ -1,18 +1,29 @@
 import React from "react";
-import { useFilterContext } from "../context/filter_context";
+import { useFilterContext } from "../context/filterContext";
 import GridView from "./GridView";
 import ListView from "./ListView";
+import Error from "./Error";
+import { useProductsContext } from "../context/productsContext";
 
 const ProductList = () => {
-  const { filtered_products, grid_view } = useFilterContext();
+  const { filteredProducts, gridView } = useFilterContext();
+  const { productsLoading, productsError, products } = useProductsContext();
 
-  if (filtered_products < 1) {
+  if (productsError) {
+    return <Error />;
+  }
+
+  if (productsLoading) {
+    return <h2>Just a moment, loading...</h2>;
+  }
+
+  if (products.length < 1 || filteredProducts.length < 1) {
     return <h2>there isn't any products to display</h2>;
   }
-  if (grid_view) {
-    return <GridView filtered_products={filtered_products} />;
+  if (gridView) {
+    return <GridView filteredProducts={filteredProducts} />;
   }
-  return <ListView filtered_products={filtered_products} />;
+  return <ListView filteredProducts={filteredProducts} />;
 };
 
 export default ProductList;

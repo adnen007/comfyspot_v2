@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import AmountButtons from "./AmountButtons";
 import { FaTrash } from "react-icons/fa";
-import { useCartContext } from "../context/cart_context";
+import { useCartContext } from "../context/cartContext";
 const CartItem = ({ product: { id, name, image, price, color, amount, stock } }) => {
   const { toggleAmount, removeItem } = useCartContext();
   return (
@@ -21,12 +21,7 @@ const CartItem = ({ product: { id, name, image, price, color, amount, stock } })
       </div>
       <div className="price">${price / 100}</div>
       <div className="quantity">
-        <AmountButtons
-          amount={amount}
-          toggleAmount={toggleAmount}
-          id={id}
-          stock={stock}
-        />
+        <AmountButtons amount={amount} toggleAmount={toggleAmount} id={id} stock={stock} />
       </div>
       <div className="subtotal">${(price * amount) / 100}</div>
       <div className="delete">

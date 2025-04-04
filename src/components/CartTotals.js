@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { useCartContext } from "../context/cart_context";
-import { useUserContext } from "../context/user_context";
+import { useCartContext } from "../context/cartContext";
 import { Link } from "react-router-dom";
+import { useUserContext } from "../context/userContext";
 
 const CartTotals = () => {
-  const { total, shipping_fee } = useCartContext();
-  const { myUser, loginWithRedirect } = useUserContext();
+  const { total, shippingFee, toggleCheckout } = useCartContext();
+  const { authenticated } = useUserContext();
   return (
     <Wrapper>
       <div className="content">
@@ -16,21 +16,21 @@ const CartTotals = () => {
         </div>
         <div className="row">
           <span>shipping fee</span>
-          <span>${shipping_fee / 100}</span>
+          <span>${shippingFee / 100}</span>
         </div>
         <hr />
         <div className="row">
           <span>order total</span>
-          <span>${(total + shipping_fee) / 100}</span>
+          <span>${(total + shippingFee) / 100}</span>
         </div>
       </div>
-      {myUser ? (
-        <button>
-          <Link to="/checkout">PROCEED TO CHECKOUT</Link>
+      {authenticated ? (
+        <button onClick={() => toggleCheckout()}>
+          <span>PROCEED TO CHECKOUT</span>
         </button>
       ) : (
-        <button onClick={loginWithRedirect}>
-          <span>LOGIN</span>
+        <button>
+          <Link to="/login">Login</Link>
         </button>
       )}
     </Wrapper>

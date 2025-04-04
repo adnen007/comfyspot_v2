@@ -17,13 +17,12 @@ const AboutPage = () => {
               Our Story <span></span>
             </h2>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit culpa pariatur
-              voluptas, at ratione consequatur eius hic eaque! Ab magni exercitationem
-              temporibus consequatur rem amet assumenda, voluptas totam ipsum qui beatae
-              ut laboriosam similique odio earum harum? Dolorem, quo voluptates. Non neque
-              enim quisquam facilis iure ex ad architecto cumque. Recusandae, iusto amet.
-              Incidunt blanditiis assumenda voluptates non explicabo praesentium? , at
-              ratione consequatur eius hic eaque! Ab magni exercitationem temporibus.
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit culpa pariatur voluptas, at ratione
+              consequatur eius hic eaque! Ab magni exercitationem temporibus consequatur rem amet assumenda, voluptas
+              totam ipsum qui beatae ut laboriosam similique odio earum harum? Dolorem, quo voluptates. Non neque enim
+              quisquam facilis iure ex ad architecto cumque. Recusandae, iusto amet. Incidunt blanditiis assumenda
+              voluptates non explicabo praesentium? , at ratione consequatur eius hic eaque! Ab magni exercitationem
+              temporibus.
             </p>
           </div>
         </div>
@@ -52,7 +51,7 @@ const Wrapper = styled.div`
     border-radius: var(--radius);
     img {
       width: 100%;
-      height: 500px;
+      height: 450px;
       display: block;
       object-fit: cover;
     }

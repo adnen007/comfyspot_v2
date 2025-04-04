@@ -1,16 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import logo from "../assets/logo.png";
-import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { links } from "../utils/constants";
+import { FaBars } from "react-icons/fa";
+import styled from "styled-components";
 import CartButtons from "./CartButtons";
-import { useProductsContext } from "../context/products_context";
-import { useUserContext } from "../context/user_context";
+import { useProductsContext } from "../context/productsContext";
+import { links } from "../utils/constants";
+import logo from "../assets/logo.png";
 
 const Nav = () => {
   const { openSidebar } = useProductsContext();
-  const { myUser } = useUserContext();
   return (
     <NavBarWrapper>
       <div className="container">
@@ -30,11 +27,6 @@ const Nav = () => {
               </li>
             );
           })}
-          {myUser ? (
-            <li>
-              <Link to="/checkout">checkout</Link>
-            </li>
-          ) : null}
         </ul>
 
         <CartButtons />
@@ -50,10 +42,12 @@ const NavBarWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
   }
-  .logo {
+  .logo > a {
+    outline: none;
   }
   .logo img {
     max-width: 180px;
+    display: block;
   }
   .menu {
     cursor: pointer;
@@ -79,12 +73,12 @@ const NavBarWrapper = styled.div`
   ul li {
   }
 
-  ul li a {
+  ul > li > a {
     text-decoration: none;
     color: var(--clr-grey-1);
     padding: 2px;
     &:hover {
-      border-bottom: 2px solid var(--clr-primary-7);
+      border-bottom: 2px solid var(--clr-primary-5);
     }
   }
   @media (width >= 992px) {

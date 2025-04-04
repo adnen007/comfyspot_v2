@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { FaCheck } from "react-icons/fa";
-import { useCartContext } from "../context/cart_context";
+import { useCartContext } from "../context/cartContext";
 import AmountButtons from "./AmountButtons";
 
 const AddToCart = ({ product: { colors, stock, id, name, price, images } }) => {
@@ -17,7 +17,7 @@ const AddToCart = ({ product: { colors, stock, id, name, price, images } }) => {
     amount: 1,
     price,
     name,
-    image: images[0].url,
+    image: images[0].small,
   });
 
   const toggleAmount = (value) => {

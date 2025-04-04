@@ -1,74 +1,70 @@
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useProductsContext } from "../context/products_context";
-import { single_product_url as url } from "../utils/constants";
-// import { formatPrice } from "../utils/helpers";
-import { Loading, Error, ProductImages, AddToCart, Stars, PageHero } from "../components";
+import { useProductsContext } from "../context/productsContext";
+import { Loading, Error, ProductImages, AddToCart, PageHero } from "../components";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const SingleProductPage = () => {
   const { id } = useParams();
 
-  const {
-    fetchSingleProduct,
-    single_product,
-    single_product_loading,
-    single_product_error,
-  } = useProductsContext();
-
+  const { fetchSingleProduct, singleProduct, singleProductLoading, singleProductError } =
+    useProductsContext();
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchSingleProduct(url + id);
-  }, []);
-
+    fetchSingleProduct(id);
+  }, [fetchSingleProduct, id]);
   useEffect(() => {
-    if (single_product_error) {
+    if (singleProductError) {
       setTimeout(() => {
         navigate("/");
-      }, 3000);
+      }, 4000);
     }
-  }, [single_product_error, navigate]);
+  }, [singleProductError, navigate]);
 
-  if (single_product_loading) {
-    return <Loading />;
+  if (singleProductLoading) {
+    return (
+      <Wrapper>
+        <Loading />
+      </Wrapper>
+    );
   }
-  if (single_product_error) {
+  if (singleProductError) {
     return <Error />;
   }
   return (
     <Wrapper>
-      <PageHero title="Products" product={single_product.name} />
+      <PageHero title="Products" product={singleProduct.name} />
       <div className="container">
         <Link className="btn" to="/products">
           back to products
         </Link>
         <div className="content">
           <div className="image_section">
-            <ProductImages images={single_product.images} />
+            <ProductImages images={singleProduct.images} />
           </div>
           <div className="info_section">
-            <h2 className="name">{single_product.name}</h2>
-            <div className="rate">
-              <Stars stars={single_product.stars} reviews={single_product.reviews} />
-            </div>
-            <div className="price">${single_product.price / 100}</div>
-            <div className="description"> {single_product.description} </div>
+            <h2 className="name">{singleProduct.name}</h2>
+            {/* <div className="rate">
+              <Stars stars={singleProduct.stars} reviews={singleProduct.reviews} />
+            </div> */}
+            <div className="price">${singleProduct.price / 100}</div>
+            <div className="description"> {singleProduct.description} </div>
             <div className="state">
               <p>
                 <span>Available:</span>
-                {single_product.stock > 0 ? "In Stock" : "Out Of Stock"}
+                {singleProduct.stock > 0 ? "In Stock" : "Out Of Stock"}
               </p>
               <p>
-                <span>SKU:</span> {single_product.id}
+                <span>SKU:</span> {singleProduct.id}
               </p>
               <p>
-                <span>Band:</span> {single_product.company}
+                <span>Band:</span> {singleProduct.company}
               </p>
             </div>
             <hr />
-            {single_product.stock > 0 && <AddToCart product={single_product} />}
+            {singleProduct.stock > 0 && <AddToCart product={singleProduct} />}
           </div>
         </div>
       </div>
@@ -77,6 +73,7 @@ const SingleProductPage = () => {
 };
 
 const Wrapper = styled.div`
+  min-height: 100vh;
   & > .container {
     margin-top: 80px;
     margin-bottom: 80px;

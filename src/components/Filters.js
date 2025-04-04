@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useFilterContext } from "../context/filter_context";
+import { useFilterContext } from "../context/filterContext";
 import { getUniqueValues } from "../utils/helpers";
 import { FaCheck } from "react-icons/fa";
 import { useRef } from "react";
@@ -10,33 +10,22 @@ const Filters = () => {
     filters: { text, category, company, color, price, min, max },
     updateFilters,
     clearFilters,
-    all_products,
+    allProducts,
   } = useFilterContext();
 
   const colorForm = useRef();
 
-  const categories = getUniqueValues("category", all_products);
-  const companies = getUniqueValues("company", all_products);
-  const colors = getUniqueValues("colors", all_products);
+  const categories = getUniqueValues("category", allProducts);
+  const companies = getUniqueValues("company", allProducts);
+  const colors = getUniqueValues("colors", allProducts);
 
   return (
     <Wrapper>
       <div className="search">
-        <input
-          placeholder="Search"
-          name="text"
-          type="text"
-          onChange={updateFilters}
-          value={text}
-        />
+        <input placeholder="Search" name="text" type="text" onChange={updateFilters} value={text} />
       </div>
       <h4>category</h4>
-      <form
-        onChange={updateFilters}
-        value={category}
-        name="category"
-        className="category"
-      >
+      <form onChange={updateFilters} value={category} name="category" className="category">
         <div>
           <input value="all" id="all" name="category" type="radio" />
           <label htmlFor="all"> All </label>
@@ -135,6 +124,7 @@ const Wrapper = styled.section`
     text-transform: capitalize;
     font-size: 14.5px;
     letter-spacing: 1.2px;
+    cursor: pointer;
   }
   .category input[type="radio"] {
     display: none;
@@ -145,6 +135,7 @@ const Wrapper = styled.section`
   select {
     margin-top: 8px;
     background-color: #f1f5f8;
+    cursor: pointer;
   }
   .colors {
     margin-top: 10px;
@@ -189,12 +180,16 @@ const Wrapper = styled.section`
   .price > input {
     display: block;
     margin-top: 7px;
+    cursor: pointer;
   }
   .shipping {
     display: flex;
     justify-content: space-between;
     margin-top: 18px;
     max-width: 200px;
+  }
+  .shipping input {
+    cursor: pointer;
   }
   .clear {
     background: var(--clr-red-dark);
@@ -205,6 +200,7 @@ const Wrapper = styled.section`
     margin-top: 20px;
     font-size: 14px;
     border: none;
+    cursor: pointer;
   }
 
   @media (min-width: 768px) {
@@ -212,116 +208,4 @@ const Wrapper = styled.section`
   }
 `;
 
-/*
-const Wrapper = styled.section`
-  .form-control {
-    margin-bottom: 1.25rem;
-    h5 {
-      margin-bottom: 0.5rem;
-    }
-  }
-  .search-input {
-    padding: 0.5rem;
-    background: var(--clr-grey-10);
-    border-radius: var(--radius);
-    border-color: transparent;
-    letter-spacing: var(--spacing);
-  }
-  .search-input::placeholder {
-    text-transform: capitalize;
-  }
-
-  button {
-    display: block;
-    margin: 0.25em 0;
-    padding: 0.25rem 0;
-    text-transform: capitalize;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid transparent;
-    letter-spacing: var(--spacing);
-    color: var(--clr-grey-5);
-    cursor: pointer;
-  }
-  .active {
-    border-color: var(--clr-grey-5);
-  }
-  .company {
-    background: var(--clr-grey-10);
-    border-radius: var(--radius);
-    border-color: transparent;
-    padding: 0.25rem;
-  }
-  .colors {
-    display: flex;
-    align-items: center;
-  }
-  .color-btn {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background: #222;
-    margin-right: 0.5rem;
-    border: none;
-    cursor: pointer;
-    opacity: 0.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    svg {
-      font-size: 0.5rem;
-      color: var(--clr-white);
-    }
-  }
-  .all-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 0.5rem;
-    opacity: 0.5;
-  }
-  .active {
-    opacity: 1;
-  }
-  .all-btn .active {
-    text-decoration: underline;
-  }
-  .price {
-    margin-bottom: 0.25rem;
-  }
-  .shipping {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    text-transform: capitalize;
-    column-gap: 0.5rem;
-    font-size: 1rem;
-    max-width: 200px;
-  }
-  .clear-btn {
-    background: var(--clr-red-dark);
-    color: var(--clr-white);
-    padding: 0.25rem 0.5rem;
-    border-radius: var(--radius);
-  }
-  @media (min-width: 768px) {
-    .content {
-      position: sticky;
-      top: 1rem;
-    }
-  }
-`*/
-
 export default Filters;
-
-/*
-
-let's say we have 
-
-const obj1 = {pr:"red",obj2:{ch:"blue"}};
-const obj3 = {...obj1};
-
-console.log(obj1.obj2 === obj3.obj2)
-
-*/

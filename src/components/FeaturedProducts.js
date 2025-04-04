@@ -1,5 +1,5 @@
 import React from "react";
-import { useProductsContext } from "../context/products_context";
+import { useProductsContext } from "../context/productsContext";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Error from "./Error";
@@ -7,26 +7,21 @@ import Loading from "./Loading";
 import Product from "./Product";
 
 const FeaturedProducts = () => {
-  const {
-    featured_products,
-    products_loading: loading,
-    products_error: error,
-  } = useProductsContext();
+  const { featuredProducts, productsLoading: loading, productsError: error } = useProductsContext();
 
   if (loading) {
     return <Loading />;
   }
   if (error) {
-    console.log(error);
     return <Error />;
   }
   return (
     <Wrapper>
-      <div className="title">
+      <div className="title" id="featured-prodcuts">
         <h2>featured products</h2>
       </div>
       <div className="container">
-        {featured_products.map((product) => {
+        {featuredProducts.map((product) => {
           return <Product key={product.id} product={product} />;
         })}
       </div>
@@ -38,7 +33,7 @@ const FeaturedProducts = () => {
 };
 
 const Wrapper = styled.section`
-  background-color: var(--clr-grey-10);
+  background-color: var(--clr-primary-7);
   padding: 80px 0;
   .title {
     h2 {
@@ -74,6 +69,9 @@ const Wrapper = styled.section`
   }
   .all_products a {
     color: var(--clr-white);
+  }
+  .all_products:hover a {
+    color: black;
   }
 `;
 

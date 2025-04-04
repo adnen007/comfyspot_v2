@@ -1,5 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { Navbar, Sidebar, Footer } from "./components";
 import {
   Home,
@@ -7,36 +8,41 @@ import {
   Cart,
   Error,
   SingleProduct,
-  Checkout,
   Products,
   PrivateRoute,
+  Orders,
+  LoginPage,
 } from "./pages";
 
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
+  const location = useLocation();
+  const hideNavAndSidebar = location.pathname === "/login";
   return (
-    <Router>
-      <div className="app">
-        <Navbar />
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/products/:id" element={<SingleProduct />} />
-          <Route
-            path="/checkout"
-            element={
-              <PrivateRoute>
-                <Checkout />
-              </PrivateRoute>
-            }
-          />
-          <Route path="*" element={<Error />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <div className="app">
+      {!hideNavAndSidebar && <Navbar />}
+      {!hideNavAndSidebar && <Sidebar />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/products/:id" element={<SingleProduct />} />
+        <Route
+          path="/orders"
+          element={
+            <PrivateRoute>
+              <Orders />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<Error />} />
+      </Routes>
+      {!hideNavAndSidebar && <Footer />}
+      <ToastContainer position="top-center" autoClose={3000} />
+    </div>
   );
 }
 
