@@ -57,7 +57,14 @@ Global Style
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  user-select: none; /* Prevents text selection */
+}
+
+a,
+.btn,
+svg,
+*[style*="cursor:pointer"],
+*[class*="cursor-pointer"] {
+  user-select: none;
 }
 
 html {

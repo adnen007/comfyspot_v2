@@ -19,13 +19,13 @@ root.render(
   <ErrorBoundary fallback={<ErrorFallback />}>
     <ProductsProvider>
       <CartProvider>
-        <UserProvider>
-          <FilterProvider>
+        <FilterProvider>
+          <UserProvider>
             <BrowserRouter>
               <App />
             </BrowserRouter>
-          </FilterProvider>
-        </UserProvider>
+          </UserProvider>
+        </FilterProvider>
       </CartProvider>
     </ProductsProvider>
   </ErrorBoundary>

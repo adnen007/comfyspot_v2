@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import reducer from "../reducers/userReducer.js";
 import { AUTHENTICATION, USER_LOADING } from "../actions.js";
 import { useCartContext } from "./cartContext.js";
+import { useFilterContext } from "./filterContext.js";
 
 const UserContext = React.createContext();
 export const UserProvider = ({ children }) => {
@@ -21,7 +22,8 @@ export const UserProvider = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { getCartFromDb } = useCartContext();
+  const { getCartFromDb, clearCart } = useCartContext();
+  const { clearFilters } = useFilterContext();
 
   const login = async (email, password) => {
     try {
@@ -58,6 +60,10 @@ export const UserProvider = ({ children }) => {
     try {
       dispatch({ type: USER_LOADING });
       await signOut(auth);
+
+      clearCart();
+      clearFilters();
+
       navigate("/login");
       toast.success("Logged out successfully");
     } catch (err) {

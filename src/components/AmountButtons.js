@@ -31,6 +31,11 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 40px;
   padding: 10px 0;
+  user-select: none;
+
+  svg {
+    cursor: pointer;
+  }
 
   span {
     font-size: 30px;
