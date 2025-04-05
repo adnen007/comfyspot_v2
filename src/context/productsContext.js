@@ -61,6 +61,7 @@ export const ProductsProvider = ({ children }) => {
         dispatch({ type: GET_PRODUCTS_BEGIN });
         const productsRef = doc(db, "products", "productsList");
         const res = await getDoc(productsRef);
+        console.log(JSON.stringify(res.data()));
         const products = res.data().products;
         dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
       } catch (err) {
